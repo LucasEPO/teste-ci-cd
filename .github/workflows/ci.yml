@@ -3,7 +3,7 @@ name: CI - Testes e SBOM
 
 on:
   push:
-    branches: [main]
+    branches: [main, demonstracao-vulnerabilidade]
   pull_request:
     branches: [main]
 
