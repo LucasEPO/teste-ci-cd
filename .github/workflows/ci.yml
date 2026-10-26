@@ -26,3 +26,14 @@ jobs:
 
       - name: Executar testes
         run: npm test
+
+      - name: Gerar SBOM CycloneDX
+        run: npx --yes @cyclonedx/cyclonedx-npm --output-file sbom.json
+
+      - name: Publicar SBOM como artefato
+        uses: actions/upload-artifact@v7
+        with:
+          name: sbom-cyclonedx
+          path: sbom.json
+          if-no-files-found: error
+          retention-days: 30
